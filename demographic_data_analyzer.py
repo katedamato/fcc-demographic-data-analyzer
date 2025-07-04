@@ -3,7 +3,7 @@ import pandas as pd
 
 def calculate_demographic_data(print_data=True):
     # Read data from file
-    def calculate_demographic_data(print_data=True):
+    df = pd.read_csv('adult.data.csv')
 
     # How many of each race are represented in this dataset? This should be a Pandas series with race names as the index labels.
     race_count = df['race'].value_counts()
@@ -18,12 +18,12 @@ def calculate_demographic_data(print_data=True):
     # What percentage of people without advanced education make more than 50K?
 
     # with and without `Bachelors`, `Masters`, or `Doctorate`
-    higher_education = df['education'].isin.(['Bachelors','Masters','Doctorate'])
+    higher_education = df['education'].isin(['Bachelors','Masters','Doctorate'])
     lower_education = ~ higher_education 
 
     # percentage with salary >50K
     higher_education_rich = round(df[df[higher_education]['salary'] == '>50k'].mean() * 100,1)
-    lower_education_rich = round(df[df[[lower_education]['salary'] == '>50k'].mean() * 100,1)
+    lower_education_rich = round(df[df[lower_education]['salary'] == '>50k'].mean() * 100,1)
 
     # What is the minimum number of hours a person works per week (hours-per-week feature)?
     min_work_hours = df['hours-per-week'].min()
